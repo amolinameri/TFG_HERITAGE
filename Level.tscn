@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy1g4nrr4wr5w"]
+
+[ext_resource type="Script" uid="uid://8qhumukwlohb" path="res://level.gd" id="1_bexhn"]
+[ext_resource type="PackedScene" uid="uid://bp6sqkwirhse6" path="res://Enemy.tscn" id="2_t7iv1"]
+
+[sub_resource type="Curve2D" id="Curve2D_s7bn3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 46, 27, 0, 0, 0, 0, 173, 54, 0, 0, 0, 0, 302, 37, 0, 0, 0, 0, 428, 43, 0, 0, 0, 0, 424, 118, 0, 0, 0, 0, 329, 261, 0, 0, 0, 0, 442, 260, 0, 0, 0, 0, 545, 243, 0, 0, 0, 0, 687, 206, 0, 0, 0, 0, 631, 117, 0, 0, 0, 0, 715, 82)
+}
+point_count = 11
+
+[node name="Level 1" type="Node2D"]
+position = Vector2(-6, 5)
+script = ExtResource("1_bexhn")
+enemy_scene = ExtResource("2_t7iv1")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_s7bn3")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(45, 27, 172, 54, 301, 36, 427, 45, 423, 116, 330, 260, 446, 261, 683, 207, 683, 199, 632, 115, 714, 82)
+default_color = Color(0, 0, 0, 1)

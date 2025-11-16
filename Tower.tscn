@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://blulkypq1dlfc"]
+
+[ext_resource type="Texture2D" uid="uid://olx3kcj0gl66" path="res://icon.svg" id="1_arn3v"]
+[ext_resource type="Script" uid="uid://cftikc0olhslb" path="res://tower.gd" id="1_bn6qc"]
+[ext_resource type="PackedScene" uid="uid://jtukj471gnyc" path="res://projectile.tscn" id="2_usulm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bn6qc"]
+
+[node name="Tower" type="Node2D"]
+position = Vector2(238, 119)
+script = ExtResource("1_bn6qc")
+projectile_scene = ExtResource("2_usulm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_arn3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bn6qc")
+
+[node name="Timer" type="Timer" parent="."]
