@@ -197,7 +197,7 @@ script/source = "extends Button
 
 func _on_pressed() -> void:
 	GameValues._reset_all_stats()
-	get_tree().change_scene_to_file(\"res://main.tscn\") # Replace with function body.
+	get_tree().change_scene_to_file("res://main.tscn\") # Solved. Starts the Game
 "
 
 [sub_resource type="GDScript" id="GDScript_83s16"]
@@ -205,7 +205,7 @@ script/source = "extends Button
 
 
 func _on_pressed() -> void:
-	get_tree().quit() # Replace with function body.
+	get_tree().quit() # Solved, quits the entire Game.
 "
 
 [node name="MainMenu" type="Node2D"]
