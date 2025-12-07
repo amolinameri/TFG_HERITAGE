@@ -1,12 +1,12 @@
 {
 	"player": {
 		"gold": 200,
-		"playerHealth": 1
+		"playerHealth": 10
 	},
 	"enemies": {
 		"goblin": {
-			"health": 15,
-			"speed": 800,
+			"health": 50,
+			"speed": 200,
 			"damage": 1,
 			"reward": 10
 		},
@@ -22,7 +22,7 @@
 	},
 	"levels": {
 		"level1": {
-			"waves": [5, 8, 12],
+			"waves": [5, 8, 12, 14],
 			"spawnInterval": 1
 		},
 	},

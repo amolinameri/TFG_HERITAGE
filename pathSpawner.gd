@@ -14,7 +14,7 @@ var enemiesSpawned
 var enemiesAlive
 var enemiesRemaining
 
-var isSpawning: bool = false # for know if are enemies spawning or not
+var isSpawning = false # for know if are enemies spawning or not
 # timer of appearances 
 @onready var timer: Timer = $Timer
 # ui, the label that shows the data of the wave to the player
