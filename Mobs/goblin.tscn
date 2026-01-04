@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b625buy3j0t0g"]
+[gd_scene load_steps=19 format=3 uid="uid://b625buy3j0t0g"]
 
 [ext_resource type="Script" uid="uid://hjq1q25w7vuw" path="res://Mobs/goblin.gd" id="1_ama5u"]
 [ext_resource type="Texture2D" uid="uid://co5juvvw4rcej" path="res://Assets/Sprites/Goblin/WalkFront.png" id="1_r0bjo"]
+[ext_resource type="Texture2D" uid="uid://bmr76pjju7cd2" path="res://Assets/Sprites/Goblin/death.png" id="3_n0mbl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6xce0"]
 
@@ -55,6 +56,61 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_52cfc"]
+atlas = ExtResource("3_n0mbl")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7cwc"]
+atlas = ExtResource("3_n0mbl")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgd6w"]
+atlas = ExtResource("3_n0mbl")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjx6s"]
+atlas = ExtResource("3_n0mbl")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0ad8"]
+atlas = ExtResource("3_n0mbl")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg4lr"]
+atlas = ExtResource("3_n0mbl")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3men7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52cfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7cwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgd6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjx6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0ad8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg4lr")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Goblin" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ama5u")
@@ -66,4 +122,12 @@ shape = SubResource("CircleShape2D_6xce0")
 sprite_frames = SubResource("SpriteFrames_g83iu")
 animation = &"goblinWalk"
 frame_progress = 0.6260926
+offset = Vector2(0, -4)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_3men7")
+animation = &"death"
+frame_progress = 0.1292756
+speed_scale = 0.7
 offset = Vector2(0, -4)

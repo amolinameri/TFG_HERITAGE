@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://be383eppq3t6s"]
+
+[ext_resource type="Script" uid="uid://b2gviccvefkwn" path="res://Defense/mageTower/mageTowerPanel.gd" id="1_0mpq4"]
+[ext_resource type="Texture2D" uid="uid://dxg6md67cl411" path="res://Assets/Sprites/Towers/mageTower.png" id="2_54ykt"]
+[ext_resource type="Texture2D" uid="uid://cygwmytnosbyw" path="res://Assets/Icons/coinIcon.png" id="3_fhkbl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odpm4"]
+atlas = ExtResource("2_54ykt")
+region = Rect2(0, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xywe6"]
+atlas = ExtResource("2_54ykt")
+region = Rect2(70, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm025"]
+atlas = ExtResource("2_54ykt")
+region = Rect2(140, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngsqb"]
+atlas = ExtResource("2_54ykt")
+region = Rect2(210, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cb0b"]
+atlas = ExtResource("2_54ykt")
+region = Rect2(280, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7wup"]
+atlas = ExtResource("2_54ykt")
+region = Rect2(350, 0, 70, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l4d0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odpm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xywe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm025")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngsqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cb0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7wup")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MageTowerPanel" type="Panel"]
+custom_minimum_size = Vector2(100, 180)
+offset_left = -48.0
+offset_top = -96.0
+offset_right = 52.0
+offset_bottom = 84.0
+script = ExtResource("1_0mpq4")
+
+[node name="MageTowerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, 95.99999)
+scale = Vector2(0.95714283, 1.1153846)
+sprite_frames = SubResource("SpriteFrames_l4d0m")
+frame_progress = 0.41392687
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 39.0
+text = "150"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, 30)
+scale = Vector2(0.005780423, 0.005357128)
+texture = ExtResource("3_fhkbl")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

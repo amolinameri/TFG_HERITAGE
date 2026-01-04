@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b74fd2d1jqq8f"]
+
+[ext_resource type="Script" uid="uid://c4uxhgritwiej" path="res://Levels/Level1/pathFollow2DLevel1.gd" id="1_kyxg0"]
+[ext_resource type="PackedScene" uid="uid://b625buy3j0t0g" path="res://Mobs/goblin.tscn" id="2_mc20k"]
+
+[sub_resource type="Curve2D" id="Curve2D_djepk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 128, 0, 0, 0, 0, 96, 128, 0, 0, 0, 0, 208, 128, 0, 0, 0, 0, 208, 576, 0, 0, 0, 0, 352, 576, 0, 0, 0, 0, 464, 576, 0, 0, 0, 0, 464, 160, 0, 0, 0, 0, 608, 160, 0, 0, 0, 0, 608, 576, 0, 0, 0, 0, 880, 576, 0, 0, 0, 0, 880, 304)
+}
+point_count = 11
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_djepk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 128)
+rotates = false
+loop = false
+script = ExtResource("1_kyxg0")
+
+[node name="Goblin" parent="PathFollow2D" instance=ExtResource("2_mc20k")]

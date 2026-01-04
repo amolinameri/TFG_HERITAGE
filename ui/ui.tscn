@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=3 uid="uid://5e3qx4uqdkhu"]
+
+[ext_resource type="PackedScene" uid="uid://duxrqvu7kli7c" path="res://Defense/arrowTower/arrowTowerPanel.tscn" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://bfd7cok2swc8j" path="res://ui/ui.gd" id="1_m6e0p"]
+[ext_resource type="PackedScene" uid="uid://be383eppq3t6s" path="res://Defense/mageTower/mageTowerPanel.tscn" id="3_27fn8"]
+[ext_resource type="PackedScene" uid="uid://cosaihy17m0ls" path="res://Defense/spike/spikePanel.tscn" id="4_nltto"]
+[ext_resource type="Texture2D" uid="uid://q8ss7ro7wkep" path="res://Assets/Icons/settingsIcon.png" id="5_obcwv"]
+[ext_resource type="PackedScene" uid="uid://beeox46uyexkf" path="res://ui/menuInGame.tscn" id="5_tf0e0"]
+
+[sub_resource type="GDScript" id="GDScript_fyqef"]
+script/source = "extends RichTextLabel
+const HEART = \"res://Assets/Icons/heartIcon.png\"
+	
+func _process(delta: float) -> void:
+	self.text = \"[img=48x48]\" + HEART + \"[/img] \" + str(GameValues.playerHealth)
+"
+
+[sub_resource type="GDScript" id="GDScript_m6e0p"]
+script/source = "extends RichTextLabel
+const COIN = \"res://Assets/Icons/coinIcon.png\"
+
+func _process(delta: float) -> void:
+	self.text = \"[img=48x48]\" + COIN + \"[/img] \" + str(GameValues.gold)
+"
+
+[sub_resource type="GDScript" id="GDScript_vkava"]
+script/source = "extends Button
+@onready var menu: Control = $\"../menuInGame\"
+
+func _on_pressed() -> void:
+	get_tree().paused = true
+	menu.visible = true
+"
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_m6e0p")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1024.0
+offset_top = 80.0
+offset_right = 1152.0
+offset_bottom = 656.0
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 116.0
+offset_bottom = 640.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="arrowTowerPanel" parent="Panel/FlowContainer" instance=ExtResource("1_fyqef")]
+layout_mode = 2
+
+[node name="MageTowerPanel" parent="Panel/FlowContainer" instance=ExtResource("3_27fn8")]
+layout_mode = 2
+
+[node name="arrowTowerPanel2" parent="Panel/FlowContainer" instance=ExtResource("4_nltto")]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+
+[node name="Health" type="RichTextLabel" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 80.0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "PV:"
+script = SubResource("GDScript_fyqef")
+
+[node name="Gold" type="RichTextLabel" parent="."]
+offset_left = 240.0
+offset_top = 16.0
+offset_right = 496.0
+offset_bottom = 99.0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "GOLD: "
+script = SubResource("GDScript_m6e0p")
+
+[node name="Wave" type="Label" parent="."]
+offset_left = 480.0
+offset_top = 16.0
+offset_right = 912.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 48
+text = "Wave: "
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(72, 72)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_right = 96.0
+grow_vertical = 0
+icon = ExtResource("5_obcwv")
+icon_alignment = 1
+expand_icon = true
+script = SubResource("GDScript_vkava")
+
+[node name="menuInGame" parent="." instance=ExtResource("5_tf0e0")]
+visible = false
+
+[node name="EndPanel" type="ColorRect" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 656.0
+color = Color(0, 0, 0, 1)
+
+[node name="EndText" type="Label" parent="EndPanel"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 208.0
+offset_right = 1024.0
+offset_bottom = 416.0
+theme_override_font_sizes/font_size = 80
+text = "ALPHA COMPLETADA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

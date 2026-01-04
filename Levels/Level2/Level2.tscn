@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba5m754kmdfdj"]
+
+[ext_resource type="Script" uid="uid://f38cpindup0r" path="res://Levels/Level2/pathFollow2DLevel2.gd" id="1_vr7nt"]
+[ext_resource type="PackedScene" uid="uid://b625buy3j0t0g" path="res://Mobs/goblin.tscn" id="2_nn734"]
+[ext_resource type="PackedScene" uid="uid://du4415bil1ljm" path="res://Mobs/slime.tscn" id="3_vr7nt"]
+[ext_resource type="PackedScene" uid="uid://dfe622dd4atlf" path="res://Mobs/bee.tscn" id="4_p5es7"]
+
+[sub_resource type="Curve2D" id="Curve2D_vr7nt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 128, 0, 0, 0, 0, 880, 128, 0, 0, 0, 0, 880, 352, 0, 0, 0, 0, 128, 352, 0, 0, 0, 0, 128, 528, 0, 0, 0, 0, 128, 640, 0, 0, 0, 0, 288, 640, 0, 0, 0, 0, 288, 528, 0, 0, 0, 0, 672, 528, 0, 0, 0, 0, 672, 640, 0, 0, 0, 0, 912, 640, 0, 0, 0, 0, 912, 560)
+}
+point_count = 12
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_vr7nt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 128)
+rotates = false
+loop = false
+script = ExtResource("1_vr7nt")
+goblinScene = ExtResource("2_nn734")
+slimesScene = ExtResource("3_vr7nt")
+beeScene = ExtResource("4_p5es7")

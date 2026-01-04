@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://cthtf17yxhpsx"]
+
+[ext_resource type="Texture2D" uid="uid://dxg6md67cl411" path="res://Assets/Sprites/Towers/mageTower.png" id="1_de3rj"]
+[ext_resource type="Script" uid="uid://cpyqpsu0hvfls" path="res://Defense/mageTower/mageTower.gd" id="1_odpm4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odpm4"]
+atlas = ExtResource("1_de3rj")
+region = Rect2(0, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xywe6"]
+atlas = ExtResource("1_de3rj")
+region = Rect2(70, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm025"]
+atlas = ExtResource("1_de3rj")
+region = Rect2(140, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngsqb"]
+atlas = ExtResource("1_de3rj")
+region = Rect2(210, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cb0b"]
+atlas = ExtResource("1_de3rj")
+region = Rect2(280, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7wup"]
+atlas = ExtResource("1_de3rj")
+region = Rect2(350, 0, 70, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ix5ii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odpm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xywe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm025")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngsqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cb0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7wup")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_de3rj"]
+radius = 272.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odpm4"]
+size = Vector2(90, 154)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xywe6"]
+bg_color = Color(0.7019608, 0.6, 0.6, 1)
+corner_radius_top_left = 450
+corner_radius_top_right = 450
+corner_radius_bottom_right = 450
+corner_radius_bottom_left = 450
+
+[node name="MageTower" type="Node2D"]
+script = ExtResource("1_odpm4")
+
+[node name="MageTowerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.5, -7.5)
+scale = Vector2(0.95714283, 1.1153846)
+sprite_frames = SubResource("SpriteFrames_ix5ii")
+frame_progress = 0.4608215
+
+[node name="AreaAim" type="Marker2D" parent="."]
+
+[node name="TowerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerArea"]
+shape = SubResource("CircleShape2D_de3rj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_odpm4")
+
+[node name="RangeShooting" type="Panel" parent="."]
+modulate = Color(0.6, 1, 1, 0.3137255)
+offset_left = -272.0
+offset_top = -272.0
+offset_right = 273.0
+offset_bottom = 273.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xywe6")
+metadata/_edit_use_anchors_ = true
+
+[node name="FireballsContainer" type="Node" parent="."]
+
+[connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
+[connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

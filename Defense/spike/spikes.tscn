@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://do8uwvbsmr55l"]
+
+[ext_resource type="Script" uid="uid://b3f8gf57na0jg" path="res://Defense/spike/spikes.gd" id="1_5so0x"]
+[ext_resource type="Texture2D" uid="uid://c0gabuiaj6w3n" path="res://Assets/Sprites/Towers/spikes.png" id="2_plp8w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrdsm"]
+atlas = ExtResource("2_plp8w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fhau"]
+atlas = ExtResource("2_plp8w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds4fp"]
+atlas = ExtResource("2_plp8w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4mtd"]
+atlas = ExtResource("2_plp8w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_688ft"]
+atlas = ExtResource("2_plp8w")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i801f"]
+atlas = ExtResource("2_plp8w")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx7pl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrdsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fhau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds4fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4mtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_688ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i801f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b480t"]
+size = Vector2(64, 64)
+
+[node name="Spikes" type="CharacterBody2D"]
+script = ExtResource("1_5so0x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tx7pl")
+frame_progress = 0.38906902
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_b480t")
+
+[node name="SpikesContainer" type="Node" parent="."]
+
+[node name="AreaActive" type="Panel" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

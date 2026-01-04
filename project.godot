@@ -18,10 +18,21 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameValues="*res://Parameters/gameValues.gd"
+Settings="*res://Parameters/settings.gd"
+MusicPlayer="*res://Music/musicPlayer.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
 project/assembly_name="Heritage"
+
+[gui]
+
+theme/custom="uid://mqgy3v161jli"
 
 [rendering]
 

@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://beeox46uyexkf"]
+
+[sub_resource type="GDScript" id="GDScript_6ouhu"]
+script/source = "extends Panel
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_6o3ii"]
+script/source = "extends HSlider
+
+func _on_value_changed(value: float) -> void:
+	Settings.volume = value
+	Settings._apply_audio()
+	Settings._save_settings()
+"
+
+[sub_resource type="GDScript" id="GDScript_lglnk"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	get_tree().paused = false
+	get_node(\"../../\").visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_nxrrm"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://Menu/mainMenu.tscn\")
+"
+
+[node name="menuInGame" type="Panel"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+script = SubResource("GDScript_6ouhu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1150, 0)
+layout_mode = 0
+offset_top = -150.0
+offset_right = 1150.0
+offset_bottom = 132.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "VOLUMEN"
+
+[node name="Slider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+script = SubResource("GDScript_6o3ii")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+text = "Reanudar el juego"
+script = SubResource("GDScript_lglnk")
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Volver al menú principal"
+script = SubResource("GDScript_nxrrm")
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/Slider" to="VBoxContainer/HBoxContainer/Slider" method="_on_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="VBoxContainer/Button2" method="_on_pressed"]

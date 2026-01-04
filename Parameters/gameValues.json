@@ -1,29 +1,67 @@
 {
 	"player": {
-		"gold": 200,
-		"playerHealth": 10
+		"gold": 250,
+		"playerHealth": 12
 	},
-	"enemies": {
+	"mobs": {
 		"goblin": {
-			"health": 50,
-			"speed": 200,
+			"health": 60,
+			"speed": 80,
 			"damage": 1,
 			"reward": 10
 		},
+		"slime": {
+			"health": 40,
+			"healthChild": 0.5,
+			"speed": 115,
+			"damage": 1,
+			"reward": 5
+		}, 
+		"bee": {
+		  "health": 40,
+		  "speed": 160,
+		  "damage": 1,
+		  "reward": 15,
+		  "paralizationDuration": 1.75,
+		  "paralizationLimit": 100,
+		  "paralizationRadius": 120,
+		  "paralizationTarget": "archers"
+		}
 	},
 	"towers": {
 		"archers": {
-			"damage": 15,
+			"damage": 10,
 			"range": 250,
-			"reloadTime": 1,
+			"reloadTime": 0.8,
 			"cost": 50,
-			"speed": 500
+			"speedProjectile": 650
 		},
+		
+		"mages": {
+			"damage": 65,
+			"range": 650,
+			"reloadTime": 6,
+			"cost": 150,
+			"splashRange": 65,
+			"speedProjectile": 520
+		},
+		"spike": {
+  			"damage": 8,
+			"slowness": 0.5,
+  			"slowTime": 2.5,
+  			"cost": 25,
+  			"uses": 15
+		}
 	},
 	"levels": {
 		"level1": {
-			"waves": [5, 8, 12, 14],
+			"waves": [8, 10, 12, 14, 16],
 			"spawnInterval": 1
 		},
-	},
+		
+		"level2": {
+			"waves": [16, 24, 32, 48, 55],
+			"spawnInterval": 0.7
+		}
+	}
 }

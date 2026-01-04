@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://cosaihy17m0ls"]
+
+[ext_resource type="Script" uid="uid://c2a8di661tv46" path="res://Defense/spike/spikePanel.gd" id="1_r2e6c"]
+[ext_resource type="Texture2D" uid="uid://c0gabuiaj6w3n" path="res://Assets/Sprites/Towers/spikes.png" id="2_r2e6c"]
+[ext_resource type="Texture2D" uid="uid://cygwmytnosbyw" path="res://Assets/Icons/coinIcon.png" id="3_r4ing"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrdsm"]
+atlas = ExtResource("2_r2e6c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fhau"]
+atlas = ExtResource("2_r2e6c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds4fp"]
+atlas = ExtResource("2_r2e6c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4mtd"]
+atlas = ExtResource("2_r2e6c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_688ft"]
+atlas = ExtResource("2_r2e6c")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i801f"]
+atlas = ExtResource("2_r2e6c")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r4ing"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrdsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fhau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds4fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4mtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_688ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i801f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="arrowTowerPanel" type="Panel"]
+custom_minimum_size = Vector2(100, 180)
+offset_left = -48.0
+offset_top = -96.0
+offset_right = 52.0
+offset_bottom = 84.0
+script = ExtResource("1_r2e6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(47.999996, 96.00001)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_r4ing")
+frame_progress = 0.2642289
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 43.0
+text = "25"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, 32)
+scale = Vector2(0.005780423, 0.005357128)
+texture = ExtResource("3_r4ing")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
